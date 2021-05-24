@@ -1,13 +1,14 @@
 //Libraries
 import firebase from "./firebase";
+import { db } from "./firebase";
 import "firebase/database";
 import { useEffect, useState } from "react";
 import Dropdown from "./Dropdown";
+import "../style/imageDisplay.css";
 
 //Function
 function ImageDisplay() {
   const [dataPatientList, setDataPatientList] = useState([]);
-  const db = firebase.database();
 
   /* Variables for database display */
   const [URL_Original, setURL_Original] = useState("");
@@ -100,8 +101,8 @@ function ImageDisplay() {
       //const dataPatientList = []; // NOO NEED
       console.log(keys);
       for (let id in dataPatient) {
-        setURL_Original(dataPatient[id].LinkOriginal);
-        setURL_Analisis(dataPatient[id].LinkOriginal);
+        setURL_Original(dataPatient[id].Link_Original);
+        setURL_Analisis(dataPatient[id].Link_Analisis);
         //Personal information
         setAge(dataPatient[id].Age);
         setName(dataPatient[id].CompleteName);
@@ -109,7 +110,7 @@ function ImageDisplay() {
 
         //Cell information
         setNoCell(dataPatient[id].NumCells);
-        setNoCellFluorescent(dataPatient[id].Flourecent); //CORREGIR NOMBRE
+        setNoCellFluorescent(dataPatient[id].Fluorecent_Cells); //CORREGIR NOMBRE
         setNoCellNonFluorescent(dataPatient[id].NonFluoCells);
 
         //Parameters Characterisitics photo
